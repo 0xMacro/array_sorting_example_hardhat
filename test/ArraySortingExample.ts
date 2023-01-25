@@ -11,13 +11,17 @@ describe("ArraySortingExample", function () {
     // Contracts are deployed using the first signer/account by default
     const [owner, otherAccount] = await ethers.getSigners();
 
-    const ArraySortingExample = await ethers.getContractFactory("ArraySortingExample");
-    const sorter = await ArraySortingExample.deploy([1,2,3,4,5,6,7,8,9,10]);
+    const ArraySortingExample = await ethers.getContractFactory(
+      "ArraySortingExample"
+    );
+    const sorter = await ArraySortingExample.deploy([
+      1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+    ]);
 
     return { sorter, owner, otherAccount };
   }
 
-  it("Slow", async function () {
+  it("Expensive", async function () {
     const { sorter, owner } = await loadFixture(fixture);
 
     await sorter.removeSlow(1);
@@ -33,7 +37,7 @@ describe("ArraySortingExample", function () {
     expect(await sorter.values(8)).to.equal(10);
   });
 
-  it("Fast", async function () {
+  it("Cheap", async function () {
     const { sorter, owner } = await loadFixture(fixture);
 
     await sorter.removeFast(1);
