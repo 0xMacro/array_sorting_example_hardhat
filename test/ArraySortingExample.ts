@@ -24,7 +24,7 @@ describe("ArraySortingExample", function () {
   it("Expensive", async function () {
     const { sorter, owner } = await loadFixture(fixture);
 
-    await sorter.removeSlow(1);
+    await sorter.removeExpensive(1);
 
     expect(await sorter.values(0)).to.equal(1);
     expect(await sorter.values(1)).to.equal(3);
@@ -40,7 +40,7 @@ describe("ArraySortingExample", function () {
   it("Cheap", async function () {
     const { sorter, owner } = await loadFixture(fixture);
 
-    await sorter.removeFast(1);
+    await sorter.removeCheap(1);
 
     expect(await sorter.values(0)).to.equal(1);
     expect(await sorter.values(1)).to.equal(10);

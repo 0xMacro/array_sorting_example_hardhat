@@ -18,7 +18,7 @@ contract ArraySortingExample {
 
     // removes a value at the given index by shifting
     // all other values over
-    function removeSlow(uint256 _index) public {
+    function removeExpensive(uint256 _index) public {
         require(_index < values.length, "ArraySortingExample: _index is out of bounds");
 
         // index = 1
@@ -29,7 +29,7 @@ contract ArraySortingExample {
         // [1,3,4,5,6,7,8,9,10]
     }
 
-    function removeFast(uint256 _index) public {
+    function removeCheap(uint256 _index) public {
         require(_index < values.length, "ArraySortingExample: _index is out of bounds");
 
         // index = 1
